@@ -1,0 +1,7 @@
+{
+  "name": "CowManager - Farmer's Digital Dairy Assistant",
+  "description": "A comprehensive dairy farm management app allowing farmers to track herd data, insemination records, and receive AI-powered insights for their cattle.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
