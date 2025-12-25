@@ -68,6 +68,7 @@ const App: React.FC = () => {
     setView('dashboard');
   };
 
+  // Helper to convert file to Base64 for persistent localStorage storage
   const fileToBase64 = (file: File): Promise<string> => {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
@@ -85,6 +86,7 @@ const App: React.FC = () => {
     const file = formData.get('image') as File;
     
     let imageUrl = editCow?.image || `https://picsum.photos/seed/${Math.random()}/300/200`;
+    
     if (file && file.size > 0) {
       try {
         imageUrl = await fileToBase64(file);
@@ -187,7 +189,7 @@ const App: React.FC = () => {
       insDate.setHours(0, 0, 0, 0);
       const diffTime = today.getTime() - insDate.getTime();
       const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-      // Farmer specifically wants to know when 22 days have passed since insemination
+      // Alert triggers exactly on or after 22 days of insemination
       return diffDays >= 22;
     });
   }, [inseminations]);
